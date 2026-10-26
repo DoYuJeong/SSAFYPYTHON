@@ -1,3 +1,6 @@
+import sys
+sys.stdin = open("sample_input.txt", "r")
+
 def bfs(s,e):
     # 1. q, v[] 생성 및 필요 변수 선언
     q = []
@@ -9,14 +12,14 @@ def bfs(s,e):
 
     while q:
         c = q.pop(0)
-        if c==0:
+        if c==e:
             return v[e]-1
 
         for n in adj[c]:  # 연결된 노드
             if v[n] == 0: # 미방문 노드
                 q.append(n)
                 v[n]=v[c]+1
-
+    return 0
 
 T = int(input())
 for tc in range(1,T+1):
